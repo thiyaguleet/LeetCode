@@ -6,7 +6,6 @@ class Solution:
         :type banned: List[str]
         :rtype: str
         """
-        #paragraph= re.split("[" + string.punctuation + "]+", paragraph)
         paragraph = re.findall(r"\w+", paragraph)
         count={}
         banned=set(banned)
