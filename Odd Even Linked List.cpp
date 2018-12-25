@@ -9,12 +9,9 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-        if(!head || !head->next || !head->next->next) return head;
-        ListNode* odd=head, *even=head->next, *temp=even;
-        int n=1, count=0;
-        while(odd->next){odd=odd->next; n++;}
-        odd=head;
-        while(odd->next && count<n/2){
+        if(!head || !head->next) return head;
+        ListNode* odd=head, *even=head->next, *temp=even, *second=head->next;
+        do{
             temp=even;
             odd->next=even->next;
             ListNode* temp2=odd;
@@ -23,8 +20,7 @@ public:
             temp2->next=temp;
             odd=odd->next;
             even=odd->next;
-            count++;
-        }
+        }while(odd!=second && odd->next!=second);
         return head;
     }
 };
