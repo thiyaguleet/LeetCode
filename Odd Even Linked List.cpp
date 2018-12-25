@@ -9,17 +9,18 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-        if(!head || !head->next) return head;
-        ListNode* odd=head, *even=head->next, *temp=even, *second=head->next;
+        if(!head || !head->next || !head->next->next) return head;
+        ListNode* odd=head, *even=head->next, *second=head->next, *end=nullptr;
+        while(odd->next) odd=odd->next;
+        end=odd;odd=head;
         do{
-            temp=even;
+            ListNode *temp=even;
             odd->next=even->next;
-            ListNode* temp2=odd;
-            while(temp2->next) temp2=temp2->next;
             temp->next=NULL;
-            temp2->next=temp;
+            end->next=temp;
             odd=odd->next;
             even=odd->next;
+            end=end->next;
         }while(odd!=second && odd->next!=second);
         return head;
     }
