@@ -28,3 +28,19 @@ public:
         return out;
     }
 };
+class Solution {
+public:
+    vector<int> out;
+    vector<int> preorder(Node* root) {
+        if(!root) return vector<int> {};
+        stack<Node*> stck;
+        stck.push(root);
+        while(!stck.empty()){
+            Node*temp=stck.top();
+            stck.pop();
+            for(int i=temp->children.size()-1; i>=0; i--) stck.push(temp->children[i]);
+            out.push_back(temp->val);
+        }
+        return out;
+    }
+};
