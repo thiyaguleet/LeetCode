@@ -1,17 +1,15 @@
-static const auto io_sync_off = []()  {
-	std::ios::sync_with_stdio(false);
-	std::cin.tie(nullptr);
-	return 0;
-}();
-
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        for(int i=0; i<nums.size();i++){
-            if(nums[i]==val){
-                nums.erase(nums.begin()+i);
-                i--;
+        int start=0, end=nums.size()-1;
+        if(!nums.size()) return 0;
+        while(start<nums.size()){
+            if(nums[start]==val){
+                nums[start]=nums[nums.size()-1];
+                nums.pop_back();
             }
+            else 
+            start++;
         }
         return nums.size();
     }
