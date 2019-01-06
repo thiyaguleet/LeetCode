@@ -13,7 +13,7 @@ public:
     bool findTarget(TreeNode* root, int k) {
         in_order(root);
         int l=0, r=out.size()-1;
-        while(l<=r){
+        while(l<r){
             int sum=out[l]+out[r];
             if(sum == k) return true;
             if(sum< k) l++;
